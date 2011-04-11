@@ -1,0 +1,20 @@
+<%=render :partial=> 'shared/flash_messages',:locals=>{:obj=>@user}%>
+
+<%= form_for(@user,:remote=>:true,:action=>'create',:format=>:js, :method=>:post) do |f| %>
+
+<div class="cover">
+<div class="subscribe">
+	<div class="logo">
+	 <p class="topone" align="center">	<%= image_tag "Klink.png"%><h2> Coming Soon </h2> </p>
+	<p><h3>A safe and fun way for people to connect with those around<br/>
+		them during the course of their everyday lives</h3> </p>
+	</div> 
+</div><br/>
+<div class="subscribe2">
+  <div class="textbox"<%= f.text_field :email_address, :value=>"Enter your email address", :id=>'txt_email_address' %></div>
+
+ <div class="subscribe-link"><a href="#" class="button super red" onClick="submit()"> Subscribe </a> </div>
+</div>
+</div>
+
+<% end %>
