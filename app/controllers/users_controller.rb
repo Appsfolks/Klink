@@ -13,17 +13,25 @@ class UsersController < ApplicationController
   end
   
   def create
-    @user = User.new(params[:user])
-    if @user.save
-      flash[:notice] = 'Subscribed Succesfully'
-    else
-      flash[:error] = 'There is an error occured, please try again later'
-    end
+   
     respond_to do |format|
-                    format.html { redirect_to root_path }
-                    format.js
-    end
-    
+
+              if(params[:email_address].nil? || params[:email_address] == "Enter your email address")
+                format.js {render :partial=>'errors' , :locals=>{:err=>'Email cannot be blank'}}
+              else
+                if(User.exists?(:email_address=>params[:email_address]))
+                  format.js {render :partial=>'errors' , :locals=>{:err=>'This email has been already subscribed!'}}
+                else
+                  @user = User.new(:email_address=>params[:email_address])
+                   if @user.save
+                     format.js {render :partial=>'success'}
+                    else
+                       format.js {render :partial=>'errors' , :locals=>{:err=>'Invalid Email address'}}
+                    end
+                  end
+                end
+           end
+   
   end
 
   def subscribe

@@ -49,9 +49,14 @@ input[type=text]
 	-webkit-box-shadow: 0 0 6px 6px #888;
 	font-size:18px;
 	color:#aaa;
+	border:1px #fff solid;
 }
 
-
+.errormessages
+{
+	background:#fff;
+	font-size:18px;
+}
 
 .cover
 {
@@ -65,14 +70,15 @@ input[type=text]
 {
 
 	width:900px;
-	height:200px;
+	height:250px;
 }
 
 .subscribe2
 {
 
 	width:900px;
-	height:150px;
+	height:250px;
+
 }
 
 .coming-soon

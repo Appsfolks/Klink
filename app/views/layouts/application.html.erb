@@ -3,12 +3,26 @@
 <head>
   <title>Klink</title>
   <%= stylesheet_link_tag :all %>
- <%= javascript_include_tag :all %>
- <script src="http://code.jquery.com/jquery-1.5.2.min.js" type="text/javascript"> </script>
+  <%= javascript_include_tag 'jquery.min', 'jquery', 'rails', 'jquery.impromptu.3.1.min'%>
   <%= csrf_meta_tag %>
 
 <script type="text/javascript">
 $(document).ready(function(){
+	
+$("#subscribe-link").click(function(){
+	$.ajax({  
+	  type: "POST",  
+	  url: "/users",  
+	  data: 'email_address='+$("#txt_email_address").val(),  
+	  success: function() {  
+	    //display message back to user here  
+	  }  
+	});  
+	return false;
+	
+});
+
+	
 	$("#txt_email_address").focus(function(){
 		if($(this).val() == "Enter your email address")
 			$(this).val("");

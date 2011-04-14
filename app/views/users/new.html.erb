@@ -1,6 +1,6 @@
-<%=render :partial=> 'shared/flash_messages',:locals=>{:obj=>@user}%>
+<%=render :partial=> 'shared/error_messages',:locals=>{:obj=>@user}%>
 
-<%= form_for(@user,:remote=>:true,:action=>'create',:format=>:js, :method=>:post) do |f| %>
+<%= form_for(@user,:action=>'create', :remote=>:true,:format=>:js,:id=>'subscribe-form') do |f| %>
 
 <div class="cover">
 <div class="subscribe">
@@ -11,9 +11,9 @@
 	</div> 
 </div><br/>
 <div class="subscribe2">
-  <div class="textbox"<%= f.text_field :email_address, :value=>"Enter your email address", :id=>'txt_email_address' %></div>
+  <div class="textbox"><%= f.text_field :email_address, :value=>"Enter your email address", :id=>'txt_email_address' %></div>
 
- <div class="subscribe-link"><a href="#" class="button super red" onClick="submit()"> Subscribe </a> </div>
+ <div class="subscribe-link"><%= link_to "subscribe","/users", :method=>:post,:remote=>:true, :onClick=>"void(0);",:class=>"button super red",:id=>"subscribe-link"%> </div>
 </div>
 </div>
 
